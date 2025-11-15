@@ -20,14 +20,16 @@ public class VIDAEnemigo : MonoBehaviour
         }
     }
 
+    
     //Al Chocar con el enemigo le hace daño
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var enemigo = collision.collider.GetComponent<VIDAEnemigo>();
         if (enemigo)
         {
-            enemigo.TakeHit(hit); //Hace el daño que le pongamos
+            enemigo.TakeHit(hit); 
         }
        Destroy(gameObject);
      }
+    
 }
