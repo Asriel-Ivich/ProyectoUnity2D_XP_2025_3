@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 
 public class PlayerVida : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class PlayerVida : MonoBehaviour
         vidaActual = vidaMaxima;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    /*private void OnTriggerEnter2D(Collider2D other)
     {
         // Verifica si el objeto que colisiona tiene la layer "Disparo Enemigo"
         if (other.gameObject.layer == LayerMask.NameToLayer("Disparo Enemigo"))
@@ -18,21 +18,26 @@ public class PlayerVida : MonoBehaviour
             DisparoEnemigo disparo = other.GetComponent<DisparoEnemigo>();
             if (disparo != null)
             {
-                RecibirDanio(disparo.danio);
+                RecibirDanio(Mathf.RoundToInt(disparo.Daño));
             }
             Destroy(other.gameObject); // Destruir el disparo
         }
-    }
+    }*/
 
     public void RecibirDanio(int daño)
     {
+        Debug.Log($"Player recibe {daño} de daño. Vida antes: {vidaActual}");
+
         vidaActual -= daño;
         vidaActual = Mathf.Clamp(vidaActual, 0, vidaMaxima);
 
+        Debug.Log($"Vida después: {vidaActual}");
+
         if (vidaActual <= 0)
         {
-            Destroy(gameObject); // La Morision del player
+            Debug.Log("Player murió.");
+            Destroy(gameObject);
         }
     }
+
 }
-*/

@@ -49,7 +49,7 @@ public class EnemyShooter : MonoBehaviour
         }
 
         // Asignar daño dinámicamente si el prefab tiene el componente Projectile
-        if (proyectil.TryGetComponent<Projectile>(out var script))
+        if (proyectil.TryGetComponent<DisparoEnemigo>(out var script))
         {
             script.Daño = dañoDelProyectil;
         }

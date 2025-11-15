@@ -9,58 +9,104 @@ public class CharacterControler : MonoBehaviour
     public float salto = 10f;
     public float dobleSaltoF = 8f;
 
-    [Header("Verificaci�n Suelo")]
+    [Header("Verificación Suelo")]
     public Transform groundCheck;
     public float checkRadius = 0.2f;
     public LayerMask whatIsGround;
 
     private Rigidbody2D rb;
-    private bool isGrounded;
-    private bool dobleSalto;
-    private float movHorizontal;
+    private Animator anim;
 
-    void Start()
+    private bool canDoubleJump;
+    private bool isGrounded;
+    private bool isDead;
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        anim = GetComponentInChildren<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
-        // Verificar si la ranita esta en el suelo
+        Mover();
+        Saltar();
+        ActualizarAnimaciones();
+    }
+
+    private void Mover()
+    {
+        float inputX = Input.GetAxisRaw("Horizontal");
+        rb.linearVelocity = new Vector2(inputX * velMovimeinto, rb.linearVelocity.y);
+
+        
+        if (inputX > 0.1f)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (inputX < -0.1f)
+            transform.localScale = new Vector3(-1, 1, 1);
+    }
+
+    private void Saltar()
+    {
+        // Detecta suelo
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        // Input del movimiento
-        movHorizontal = Input.GetAxis("Horizontal");
+        if (isGrounded)
+        {
+            canDoubleJump = true;
+        }
 
-        // Salto
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrounded)
             {
-                Jump(salto);
-                dobleSalto = true;
+                AplicarSalto(salto);
             }
-            else if (dobleSalto)
+            else if (canDoubleJump)
             {
-                Jump(dobleSaltoF);
-                dobleSalto = false;
+                AplicarSalto(dobleSaltoF);
+                canDoubleJump = false;
             }
         }
     }
 
-    void FixedUpdate()
-    {
-        // Movimiento horizontal de la ranita
-        rb.linearVelocity = new Vector2(movHorizontal * velMovimeinto, rb.linearVelocity.y);
-    }
-
-    void Jump(float force)
+    private void AplicarSalto(float force)
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, force);
     }
 
-    // Area del detector del suelo
-    void OnDrawGizmosSelected()
+    // se llaman a las animaciones
+    private void ActualizarAnimaciones()
+    {
+        if (anim == null) return;
+
+       
+
+        float velX = Mathf.Abs(rb.linearVelocity.x);
+        float velY = rb.linearVelocity.y;
+
+        if (!isGrounded && velY > 0.1f)
+        {
+            anim.Play("SALTO");
+        }
+        else if (!isGrounded && velY < -0.1f)
+        {
+            anim.Play("CAIDA");
+        }
+        else if (velX > 0.1f)
+        {
+            anim.Play("WALK");
+        }
+        else
+        {
+            anim.Play("IDLE");
+        }
+    }
+
+    
+
+    private void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
         {
@@ -69,3 +115,4 @@ public class CharacterControler : MonoBehaviour
         }
     }
 }
+
