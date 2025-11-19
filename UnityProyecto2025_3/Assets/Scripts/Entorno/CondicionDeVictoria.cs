@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CondicionDeVictoria : MonoBehaviour
+public class CondicionDeVictoria : Pausa
 {
     [SerializeField] private float tiempo = 240f; //4 minutos
     private bool final = false;
@@ -24,10 +24,7 @@ public class CondicionDeVictoria : MonoBehaviour
         final = true;
         Debug.Log("¡Se acabo! Lograste Aguantar.");
 
-        // Cerrar la aplicación (solo en build)
-        Application.Quit();
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        MostrarVictoria();
     }
 
     public float GetCurrentTime()

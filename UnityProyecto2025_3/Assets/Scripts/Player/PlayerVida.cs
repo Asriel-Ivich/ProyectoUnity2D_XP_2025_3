@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerVida : MonoBehaviour
 {
-    public int vidaMaxima = 20;
+    /*public int vidaMaxima = 20;
     public int vidaActual;
 
     void Start()
@@ -10,7 +10,7 @@ public class PlayerVida : MonoBehaviour
         vidaActual = vidaMaxima;
     }
 
-    /*private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // Verifica si el objeto que colisiona tiene la layer "Disparo Enemigo"
         if (other.gameObject.layer == LayerMask.NameToLayer("Disparo Enemigo"))
@@ -22,7 +22,7 @@ public class PlayerVida : MonoBehaviour
             }
             Destroy(other.gameObject); // Destruir el disparo
         }
-    }*/
+    }
 
     public void RecibirDanio(int daño)
     {
@@ -38,6 +38,45 @@ public class PlayerVida : MonoBehaviour
             Debug.Log("Player murió.");
             Destroy(gameObject);
         }
+    }*/
+
+    public int vidaMaxima = 20;
+    public int vidaActual;
+
+    void Start()
+    {
+        vidaActual = vidaMaxima;
     }
 
+    public void RecibirDanio(int daño)
+    {
+        Debug.Log($"Player recibe {daño} de daño. Vida antes: {vidaActual}");
+
+        vidaActual -= daño;
+        vidaActual = Mathf.Clamp(vidaActual, 0, vidaMaxima);
+
+        Debug.Log($"Vida después: {vidaActual}");
+
+        if (vidaActual <= 0)
+        {
+            Morir();
+        }
+    }
+
+    void Morir()
+    {
+        Debug.Log("Player murió.");
+
+        Pausa pauseManager = FindObjectOfType<Pausa>();
+        if (pauseManager != null)
+        {
+            pauseManager.MostrarGameOver();
+        }
+        else
+        {
+            Debug.LogError("No se encontró PauseManager en la escena");
+        }
+
+        gameObject.SetActive(false);
+    }
 }
