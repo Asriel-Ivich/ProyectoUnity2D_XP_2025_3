@@ -1,25 +1,16 @@
 fileFormatVersion: 2
-guid: 1bd90cd33cf8d4b449f895c6bd4765e2
+guid: 1a78d870bb916c2459cd525ca03b89e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3558958217560266200
-    second: Spaceship_Death2_36x36_0
+      213: 4833913761308731167
+    second: Spaceship_Damage4-Sheet_36x36_0
   - first:
-      213: -5793113195081465826
-    second: Spaceship_Death2_36x36_1
+      213: 1962775825092289716
+    second: Spaceship_Damage4-Sheet_36x36_1
   - first:
-      213: 5953859798096415608
-    second: Spaceship_Death2_36x36_2
-  - first:
-      213: 1705028688087866543
-    second: Spaceship_Death2_36x36_3
-  - first:
-      213: 3029444710469795104
-    second: Spaceship_Death2_36x36_4
-  - first:
-      213: 7482059505535743066
-    second: Spaceship_Death2_36x36_5
+      213: -4334753112597938401
+    second: Spaceship_Damage4-Sheet_36x36_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -66,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 35
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -128,7 +119,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spaceship_Death2_36x36_0
+      name: Spaceship_Damage4-Sheet_36x36_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82aecd77b5a0c9ec0800000000000000
-      internalID: -3558958217560266200
+      spriteID: f17eda964f2851340800000000000000
+      internalID: 4833913761308731167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spaceship_Death2_36x36_1
+      name: Spaceship_Damage4-Sheet_36x36_1
       rect:
         serializedVersion: 2
         x: 36
@@ -165,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e108a870e3aba9fa0800000000000000
-      internalID: -5793113195081465826
+      spriteID: 4b4a954b63e2d3b10800000000000000
+      internalID: 1962775825092289716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spaceship_Death2_36x36_2
+      name: Spaceship_Damage4-Sheet_36x36_2
       rect:
         serializedVersion: 2
         x: 72
@@ -187,74 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87b040401fb50a250800000000000000
-      internalID: 5953859798096415608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spaceship_Death2_36x36_3
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 0
-        width: 36
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: facd355ee8a79a710800000000000000
-      internalID: 1705028688087866543
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spaceship_Death2_36x36_4
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 36
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02dfc3ad9efba0a20800000000000000
-      internalID: 3029444710469795104
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spaceship_Death2_36x36_5
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 0
-        width: 36
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a54fac78a7d95d760800000000000000
-      internalID: 7482059505535743066
+      spriteID: f1fb496b20dd7d3c0800000000000000
+      internalID: -4334753112597938401
       vertices: []
       indices: 
       edges: []
@@ -263,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9c6e7efa3c637e841aae9790f8d42609
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -273,12 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Spaceship_Death2_36x36_0: -3558958217560266200
-      Spaceship_Death2_36x36_1: -5793113195081465826
-      Spaceship_Death2_36x36_2: 5953859798096415608
-      Spaceship_Death2_36x36_3: 1705028688087866543
-      Spaceship_Death2_36x36_4: 3029444710469795104
-      Spaceship_Death2_36x36_5: 7482059505535743066
+      Spaceship_Damage4-Sheet_36x36_0: 4833913761308731167
+      Spaceship_Damage4-Sheet_36x36_1: 1962775825092289716
+      Spaceship_Damage4-Sheet_36x36_2: -4334753112597938401
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

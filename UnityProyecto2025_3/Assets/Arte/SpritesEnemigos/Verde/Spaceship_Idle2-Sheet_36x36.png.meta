@@ -1,25 +1,22 @@
 fileFormatVersion: 2
-guid: a044ec8cee2a3954894047597ca75c6e
+guid: 477c4c4407a3cf747ac68f6bf4db1b1f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6407096303457481662
-    second: Spaceship_Death3-Sheet_36x36_0
+      213: 644401266585199361
+    second: Spaceship_Idle2-Sheet_36x36_0
   - first:
-      213: -3954937054286297777
-    second: Spaceship_Death3-Sheet_36x36_1
+      213: 117541679099661638
+    second: Spaceship_Idle2-Sheet_36x36_1
   - first:
-      213: -3155881207993688856
-    second: Spaceship_Death3-Sheet_36x36_2
+      213: -7919299041383161019
+    second: Spaceship_Idle2-Sheet_36x36_2
   - first:
-      213: -1059059180878269325
-    second: Spaceship_Death3-Sheet_36x36_3
+      213: 1985066400320451641
+    second: Spaceship_Idle2-Sheet_36x36_3
   - first:
-      213: -9135999921987787665
-    second: Spaceship_Death3-Sheet_36x36_4
-  - first:
-      213: -1693543227574009255
-    second: Spaceship_Death3-Sheet_36x36_5
+      213: -7257129484320116126
+    second: Spaceship_Idle2-Sheet_36x36_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -66,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 35
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -128,7 +125,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spaceship_Death3-Sheet_36x36_0
+      name: Spaceship_Idle2-Sheet_36x36_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24cc2b6bbdb6517a0800000000000000
-      internalID: -6407096303457481662
+      spriteID: 1036f9ba98f51f800800000000000000
+      internalID: 644401266585199361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spaceship_Death3-Sheet_36x36_1
+      name: Spaceship_Idle2-Sheet_36x36_1
       rect:
         serializedVersion: 2
         x: 36
@@ -165,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f454c3a04bd3d19c0800000000000000
-      internalID: -3954937054286297777
+      spriteID: 64dc90dc88791a100800000000000000
+      internalID: 117541679099661638
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spaceship_Death3-Sheet_36x36_2
+      name: Spaceship_Idle2-Sheet_36x36_2
       rect:
         serializedVersion: 2
         x: 72
@@ -187,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8ec943c03ce0434d0800000000000000
-      internalID: -3155881207993688856
+      spriteID: 543e348ea7ff81290800000000000000
+      internalID: -7919299041383161019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spaceship_Death3-Sheet_36x36_3
+      name: Spaceship_Idle2-Sheet_36x36_3
       rect:
         serializedVersion: 2
         x: 108
@@ -209,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 37472af39477d41f0800000000000000
-      internalID: -1059059180878269325
+      spriteID: 934f9aeaf5f5c8b10800000000000000
+      internalID: 1985066400320451641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spaceship_Death3-Sheet_36x36_4
+      name: Spaceship_Idle2-Sheet_36x36_4
       rect:
         serializedVersion: 2
         x: 144
@@ -231,14 +228,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f64ebedb978663180800000000000000
-      internalID: -9135999921987787665
+      spriteID: 262f5161f2f794b90800000000000000
+      internalID: -7257129484320116126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spaceship_Death3-Sheet_36x36_5
+      name: Spaceship_Idle2-Sheet_36x36_5
       rect:
         serializedVersion: 2
         x: 180
@@ -251,10 +248,32 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 952cea448635f78e0800000000000000
-      internalID: -1693543227574009255
+      spriteID: 24445efce6196b242b00c22a026cd5b5
+      internalID: 1508864830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spaceship_Idle2-Sheet_36x36_6
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 0
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bde9c3f85e738ad4b81393f8929ac74f
+      internalID: 922857932
       vertices: []
       indices: 
       edges: []
@@ -263,7 +282,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 06d085fa61ab74b42877883a7fe2e3fa
+    spriteID: d31c8a6d727bc7d4193077846972efa3
     internalID: 0
     vertices: []
     indices: 
@@ -273,12 +292,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Spaceship_Death3-Sheet_36x36_0: -6407096303457481662
-      Spaceship_Death3-Sheet_36x36_1: -3954937054286297777
-      Spaceship_Death3-Sheet_36x36_2: -3155881207993688856
-      Spaceship_Death3-Sheet_36x36_3: -1059059180878269325
-      Spaceship_Death3-Sheet_36x36_4: -9135999921987787665
-      Spaceship_Death3-Sheet_36x36_5: -1693543227574009255
+      Spaceship_Idle2-Sheet_36x36_0: 644401266585199361
+      Spaceship_Idle2-Sheet_36x36_1: 117541679099661638
+      Spaceship_Idle2-Sheet_36x36_2: -7919299041383161019
+      Spaceship_Idle2-Sheet_36x36_3: 1985066400320451641
+      Spaceship_Idle2-Sheet_36x36_4: -7257129484320116126
+      Spaceship_Idle2-Sheet_36x36_5: 1508864830
+      Spaceship_Idle2-Sheet_36x36_6: 922857932
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
