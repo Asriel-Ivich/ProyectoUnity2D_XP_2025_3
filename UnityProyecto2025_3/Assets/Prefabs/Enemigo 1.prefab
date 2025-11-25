@@ -50,9 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf15bb055ed234468b59b4cecab67ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PuntosVida: 2
   VidaMaxima: 2
-  hit: 1
+  PuntosVida: 2
 --- !u!114 &8193493319300804924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,8 +67,8 @@ MonoBehaviour:
   proyectilPrefab: {fileID: 8223647535364095950, guid: 22fed9b24d3bd8d49a4a82cfa0f6a027, type: 3}
   puntoDisparo: {fileID: 5188095991110585973}
   fuerzaDisparo: 9
-  tiempoEntreDisparos: 1
-  "da\xF1oDelProyectil": 1
+  tiempoEntreDisparos: 2
+  "da\xF1oDelProyectil": 2
 --- !u!114 &2275071128915219792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,8 +82,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadHorizontal: 1
-  distanciaPatrulla: 1
-  velocidadBajada: 3
+  distanciaPatrulla: 1.8
+  velocidadBajada: 1
   tiempoAntesDeBajar: 3
   distanciaBajada: 1.9
 --- !u!61 &1533059091161377435

@@ -108,11 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6f572f944417148b288725d39e34af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadHorizontal: 2
-  distanciaPatrulla: 1
-  velocidadBajada: 3
+  velocidadHorizontal: 3
+  distanciaPatrulla: 1.8
+  velocidadBajada: 4
   tiempoAntesDeBajar: 3
-  distanciaBajada: 0.9
+  distanciaBajada: 1.4
 --- !u!114 &9169313180445946769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf15bb055ed234468b59b4cecab67ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VidaMaxima: 2
+  VidaMaxima: 3
   PuntosVida: 0
 --- !u!61 &2586201555419423306
 BoxCollider2D:
