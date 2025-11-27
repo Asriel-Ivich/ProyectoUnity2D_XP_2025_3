@@ -226,7 +226,7 @@ MonoBehaviour:
   distanciaPatrulla: 7
   velocidadBajada: 1
   tiempoAntesDeBajar: 5
-  distanciaBajada: 3
+  distanciaBajada: 2.5
 --- !u!61 &2082132547361639769
 BoxCollider2D:
   m_ObjectHideFlags: 0
