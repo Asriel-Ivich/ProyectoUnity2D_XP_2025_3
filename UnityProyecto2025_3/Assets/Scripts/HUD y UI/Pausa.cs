@@ -13,8 +13,9 @@ public class Pausa : MonoBehaviour
     public Image imagenGameOver;
     public Image imagenVictoria;
 
-    [Header("Configuración")]
+    [Header("Configuración de Escenas")]
     public string nombreEscenaMenu = "MenuPrincipal";
+    public string nombreEscenaVictoria; 
 
     [Header("Tiempos de Espera")]
     public float tiempoEsperaGameOver = 3f;
@@ -75,7 +76,7 @@ public class Pausa : MonoBehaviour
     {
         volumenGlobal = nuevoVolumen;
         AudioListener.volume = volumenGlobal;
-        PlayerPrefs.SetFloat("VolumenGlobal", volumenGlobal);
+        PlayerPrefs.SetFloat("VolumenGlobal", nuevoVolumen);
     }
 
     public void VolverAlMenu()
@@ -89,7 +90,7 @@ public class Pausa : MonoBehaviour
 
     public void MostrarGameOver()
     {
-        Time.timeScale = 0f; 
+        Time.timeScale = 0f;
         juegoPausado = true;
 
         if (panelGameOver != null)
@@ -107,7 +108,7 @@ public class Pausa : MonoBehaviour
         if (panelVictoria != null)
         {
             panelVictoria.SetActive(true);
-            StartCoroutine(EsperarYVolverAlMenu(tiempoEsperaVictoria));
+            StartCoroutine(EsperarYIrAEscenaVictoria(tiempoEsperaVictoria));
         }
     }
 
@@ -115,6 +116,27 @@ public class Pausa : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(tiempoEspera);
         VolverAlMenu();
+    }
+
+    private IEnumerator EsperarYIrAEscenaVictoria(float tiempoEspera)
+    {
+        yield return new WaitForSecondsRealtime(tiempoEspera);
+        IrAEscenaVictoria();
+    }
+
+    public void IrAEscenaVictoria()
+    {
+        Time.timeScale = 1f; 
+
+        if (!string.IsNullOrEmpty(nombreEscenaVictoria))
+        {
+            SceneManager.LoadScene(nombreEscenaVictoria);
+        }
+        else
+        {
+            Debug.LogError("No se ha asignado un nombre de escena para la victoria");
+            VolverAlMenu();
+        }
     }
 
     public static float GetVolumenGlobal()

@@ -2706,6 +2706,7 @@ GameObject:
   - component: {fileID: 1647197473}
   - component: {fileID: 1647197472}
   - component: {fileID: 1647197471}
+  - component: {fileID: 1647197474}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2720,7 +2721,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647197470}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f801ddbd0a4cf4c4d8943f9fdc23d0a8, type: 3}
   m_Name: 
@@ -2732,6 +2733,7 @@ MonoBehaviour:
   imagenGameOver: {fileID: 1450651925}
   imagenVictoria: {fileID: 126464867}
   nombreEscenaMenu: Menu
+  nombreEscenaVictoria: LVFINAL
   tiempoEsperaGameOver: 5
   tiempoEsperaVictoria: 5
 --- !u!114 &1647197472
@@ -2753,9 +2755,10 @@ MonoBehaviour:
   imagenGameOver: {fileID: 1450651925}
   imagenVictoria: {fileID: 126464867}
   nombreEscenaMenu: Menu
+  nombreEscenaVictoria: LVFINAL
   tiempoEsperaGameOver: 3
   tiempoEsperaVictoria: 3
-  tiempo: 240
+  tiempo: 5
 --- !u!4 &1647197473
 Transform:
   m_ObjectHideFlags: 0
@@ -2771,6 +2774,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1647197474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647197470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73800e954777fc548a61fb05ff02e30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perritoPrefab: {fileID: 738337909064767382, guid: cf9a791034611f548b05222ecbee6abe, type: 3}
+  tiempoEntreSpawn: 10
+  maxItemsEnEscena: 3
+  layerPiso:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!4 &1650556536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2120400518052152018, guid: 1613960ecc858f64b9b0c60e862b6b7d, type: 3}

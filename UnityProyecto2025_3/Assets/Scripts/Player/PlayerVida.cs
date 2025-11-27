@@ -63,6 +63,17 @@ public class PlayerVida : MonoBehaviour
         }
     }
 
+    public void RecuperarVida(int cantidad)
+    {
+        int vidaAnterior = vidaActual;
+        vidaActual += cantidad;
+        vidaActual = Mathf.Clamp(vidaActual, 0, vidaMaxima);
+
+        int vidaRealRecuperada = vidaActual - vidaAnterior;
+
+        Debug.Log($"Player recuperó {vidaRealRecuperada} de vida. Vida actual: {vidaActual}/{vidaMaxima}");
+    }
+
     void Morir()
     {
         Debug.Log("Player murió.");

@@ -3082,6 +3082,7 @@ GameObject:
   - component: {fileID: 1234160174}
   - component: {fileID: 1234160173}
   - component: {fileID: 1234160175}
+  - component: {fileID: 1234160176}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3108,9 +3109,10 @@ MonoBehaviour:
   imagenGameOver: {fileID: 1945792331}
   imagenVictoria: {fileID: 1927444659}
   nombreEscenaMenu: Menu
+  nombreEscenaVictoria: LV2
   tiempoEsperaGameOver: 3
   tiempoEsperaVictoria: 3
-  tiempo: 240
+  tiempo: 60
 --- !u!4 &1234160174
 Transform:
   m_ObjectHideFlags: 0
@@ -3133,7 +3135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234160172}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f801ddbd0a4cf4c4d8943f9fdc23d0a8, type: 3}
   m_Name: 
@@ -3145,8 +3147,27 @@ MonoBehaviour:
   imagenGameOver: {fileID: 1945792331}
   imagenVictoria: {fileID: 1927444659}
   nombreEscenaMenu: Menu
+  nombreEscenaVictoria: LV2
   tiempoEsperaGameOver: 5
   tiempoEsperaVictoria: 5
+--- !u!114 &1234160176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234160172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73800e954777fc548a61fb05ff02e30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perritoPrefab: {fileID: 738337909064767382, guid: cf9a791034611f548b05222ecbee6abe, type: 3}
+  tiempoEntreSpawn: 10
+  maxItemsEnEscena: 3
+  layerPiso:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1240096692
 GameObject:
   m_ObjectHideFlags: 0
