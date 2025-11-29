@@ -42,5 +42,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemigo
+    uniqueID: 741856031
+    locked: 0
+  - name: Prota
+    uniqueID: 1739686165
+    locked: 0
   m_RenderingLayers:
   - Default

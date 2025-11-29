@@ -19,7 +19,20 @@ public class EnemyShooter : MonoBehaviour
     [Header("Daño del proyectil")]
     [SerializeField, Min(0f)] private float dañoDelProyectil = 10f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip sonidoDisparo;
+
     private float tiempoSiguienteDisparo;
+
+    private void Awake()
+    {
+        // Busca un AudioSource en el mismo objeto si no se asigna desde el Inspector
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+    }
 
     private void Update()
     {
@@ -33,6 +46,7 @@ public class EnemyShooter : MonoBehaviour
 
     private void Disparar()
     {
+        // Verifica referencias necesarias para disparar
         if (proyectilPrefab == null || puntoDisparo == null)
         {
             Debug.LogWarning($"{name}: faltan referencias al prefab o punto de disparo.");
@@ -42,18 +56,30 @@ public class EnemyShooter : MonoBehaviour
         // Instancia del proyectil en el punto definido
         var proyectil = Instantiate(proyectilPrefab, puntoDisparo.position, Quaternion.identity);
 
-        // Si el proyectil tiene un Rigidbody2D, aplicamos la nueva propiedad linearVelocity
+        // Asigna velocidad hacia abajo 
         if (proyectil.TryGetComponent<Rigidbody2D>(out var rb))
         {
             rb.linearVelocity = Vector2.down * fuerzaDisparo;
         }
 
-        // Asignar daño dinámicamente si el prefab tiene el componente Projectile
+        // Asigna daño dinámicamente si el prefab tiene el componente DisparoEnemigo
         if (proyectil.TryGetComponent<DisparoEnemigo>(out var script))
         {
             script.Daño = dañoDelProyectil;
         }
+
+        // Llama al audio del disparo
+        ReproducirSonidoDisparo();
+    }
+
+    private void ReproducirSonidoDisparo()
+    {
+        // Verifica que existan referencias de audio
+        if (audioSource != null && sonidoDisparo != null)
+        {
+            // Reproduce el sonido del disparo
+            audioSource.PlayOneShot(sonidoDisparo);
+        }
     }
 }
-
 

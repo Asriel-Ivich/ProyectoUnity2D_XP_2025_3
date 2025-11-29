@@ -3419,12 +3419,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f801ddbd0a4cf4c4d8943f9fdc23d0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelPausa: {fileID: 0}
-  sliderVolumenPausa: {fileID: 0}
-  panelGameOver: {fileID: 0}
-  panelVictoria: {fileID: 0}
-  imagenGameOver: {fileID: 0}
-  imagenVictoria: {fileID: 0}
+  panelPausa: {fileID: 2099559166}
+  sliderVolumenPausa: {fileID: 130247928}
+  panelGameOver: {fileID: 859737533}
+  panelVictoria: {fileID: 931755483}
+  imagenGameOver: {fileID: 144901319}
+  imagenVictoria: {fileID: 1359861298}
   nombreEscenaMenu: Menu
   nombreEscenaVictoria: LVFINAL
   tiempoEsperaGameOver: 5
@@ -3441,12 +3441,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa47b28f5aceb894b96540c14f161a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelPausa: {fileID: 0}
-  sliderVolumenPausa: {fileID: 0}
-  panelGameOver: {fileID: 0}
-  panelVictoria: {fileID: 0}
-  imagenGameOver: {fileID: 0}
-  imagenVictoria: {fileID: 0}
+  panelPausa: {fileID: 2099559166}
+  sliderVolumenPausa: {fileID: 130247928}
+  panelGameOver: {fileID: 859737533}
+  panelVictoria: {fileID: 931755483}
+  imagenGameOver: {fileID: 144901319}
+  imagenVictoria: {fileID: 1359861298}
   nombreEscenaMenu: Menu
   nombreEscenaVictoria: LVFINAL
   tiempoEsperaGameOver: 3
@@ -3484,7 +3484,7 @@ MonoBehaviour:
   maxItemsEnEscena: 3
   layerPiso:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 320
 --- !u!4 &1650556536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2120400518052152018, guid: 1613960ecc858f64b9b0c60e862b6b7d, type: 3}
