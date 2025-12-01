@@ -1868,7 +1868,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000001fd3372c1581b167
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3479,12 +3479,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73800e954777fc548a61fb05ff02e30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perritoPrefab: {fileID: 738337909064767382, guid: cf9a791034611f548b05222ecbee6abe, type: 3}
+  dogPrefab: {fileID: 738337909064767382, guid: cf9a791034611f548b05222ecbee6abe, type: 3}
   tiempoEntreSpawn: 10
-  maxItemsEnEscena: 3
-  layerPiso:
+  maxPerrosEnEscena: 3
+  layerPisos:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 64
 --- !u!4 &1650556536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2120400518052152018, guid: 1613960ecc858f64b9b0c60e862b6b7d, type: 3}

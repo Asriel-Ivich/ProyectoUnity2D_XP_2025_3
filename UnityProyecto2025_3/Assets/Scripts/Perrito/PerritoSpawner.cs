@@ -3,87 +3,107 @@ using System.Collections;
 
 public class PerritoSpawner : MonoBehaviour
 {
-    [Header("Configuración del Item")]
-    public GameObject perritoPrefab;
-    public float tiempoEntreSpawn = 10f;
-    public int maxItemsEnEscena = 3;
+    [Header("Configuración")]
+    public GameObject dogPrefab;
+    public float tiempoEntreSpawn = 5f;
+    public int maxPerrosEnEscena = 3;
+    public LayerMask layerPisos;
 
-    [Header("Configuración de Layer")]
-    public LayerMask layerPiso;
-
-    private int itemsActuales = 0;
+    private int perrosActuales = 0;
     private Collider2D[] pisosEnEscena;
 
     void Start()
     {
         EncontrarPisos();
-
-        StartCoroutine(SpawnItemsCorrutina());
+        StartCoroutine(SpawnPerrosCorrutina());
     }
 
     void EncontrarPisos()
     {
-        pisosEnEscena = Physics2D.OverlapAreaAll(
-            new Vector2(-100, -100),
-            new Vector2(100, 100),
-            layerPiso
-        );
+        // Encontrar todos los colliders con las layers correctas
+        Collider2D[] todosLosColliders = FindObjectsOfType<Collider2D>();
+        System.Collections.Generic.List<Collider2D> pisosList = new System.Collections.Generic.List<Collider2D>();
 
+        foreach (Collider2D collider in todosLosColliders)
+        {
+            if (((1 << collider.gameObject.layer) & layerPisos.value) != 0)
+            {
+                pisosList.Add(collider);
+            }
+        }
+
+        pisosEnEscena = pisosList.ToArray();
         Debug.Log($"Se encontraron {pisosEnEscena.Length} pisos en la escena");
     }
 
-    IEnumerator SpawnItemsCorrutina()
+    IEnumerator SpawnPerrosCorrutina()
     {
         while (true)
         {
             yield return new WaitForSeconds(tiempoEntreSpawn);
 
-            if (itemsActuales < maxItemsEnEscena && pisosEnEscena.Length > 0)
+            if (perrosActuales < maxPerrosEnEscena && pisosEnEscena.Length > 0)
             {
-                SpawnItem();
+                SpawnPerro();
             }
         }
     }
 
-    void SpawnItem()
+    void SpawnPerro()
     {
+        // Elegir un piso aleatorio
         Collider2D pisoAleatorio = pisosEnEscena[Random.Range(0, pisosEnEscena.Length)];
 
-        Vector2 posicionSpawn = CalcularPosicionEnPiso(pisoAleatorio);
+        // Calcular posición segura en el piso
+        Vector2 posicionSpawn = CalcularPosicionSeguraEnPiso(pisoAleatorio);
 
-        GameObject nuevoItem = Instantiate(perritoPrefab, posicionSpawn, Quaternion.identity);
+        // Instanciar el perro
+        GameObject nuevoPerro = Instantiate(dogPrefab, posicionSpawn, Quaternion.identity);
 
-        MovimientoPerrito itemMovement = nuevoItem.GetComponent<MovimientoPerrito>();
-        if (itemMovement != null)
+        // Configurar el script del perro
+        MovimientoPerrito dogScript = nuevoPerro.GetComponent<MovimientoPerrito>();
+        if (dogScript != null)
         {
-            itemMovement.SetSpawner(this);
+            dogScript.SetSpawner(this);
         }
 
-        itemsActuales++;
-        Debug.Log($"Item instanciado. Total items: {itemsActuales}");
+        perrosActuales++;
+        Debug.Log($"Perro instanciado. Total perros: {perrosActuales}");
     }
 
-    Vector2 CalcularPosicionEnPiso(Collider2D piso)
+    Vector2 CalcularPosicionSeguraEnPiso(Collider2D piso)
     {
         Bounds bounds = piso.bounds;
 
-        float x = Random.Range(bounds.min.x, bounds.max.x);
-        float y = bounds.max.y;
+        // Calcular posición aleatoria en el centro del piso (no cerca de los bordes)
+        float margenSeguro = 0.5f; // Margen de seguridad desde los bordes
+        float xMin = bounds.min.x + margenSeguro;
+        float xMax = bounds.max.x - margenSeguro;
+
+        // Asegurarse de que el mínimo sea menor que el máximo
+        if (xMin >= xMax)
+        {
+            xMin = bounds.center.x - 0.1f;
+            xMax = bounds.center.x + 0.1f;
+        }
+
+        float x = Random.Range(xMin, xMax);
+        float y = bounds.max.y + 0.1f; // Un poco por encima del piso
 
         return new Vector2(x, y);
     }
 
-    public void ItemDestruido()
+    public void PerroDestruido()
     {
-        itemsActuales--;
-        itemsActuales = Mathf.Max(0, itemsActuales); 
+        perrosActuales--;
+        perrosActuales = Mathf.Max(0, perrosActuales);
     }
 
     void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.green;
         if (pisosEnEscena != null)
         {
-            Gizmos.color = Color.green;
             foreach (Collider2D piso in pisosEnEscena)
             {
                 if (piso != null)

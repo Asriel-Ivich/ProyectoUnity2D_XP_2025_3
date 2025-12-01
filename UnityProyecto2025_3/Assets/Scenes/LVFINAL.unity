@@ -2954,12 +2954,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73800e954777fc548a61fb05ff02e30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perritoPrefab: {fileID: 738337909064767382, guid: cf9a791034611f548b05222ecbee6abe, type: 3}
+  dogPrefab: {fileID: 738337909064767382, guid: cf9a791034611f548b05222ecbee6abe, type: 3}
   tiempoEntreSpawn: 10
-  maxItemsEnEscena: 3
-  layerPiso:
+  maxPerrosEnEscena: 3
+  layerPisos:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 64
 --- !u!1 &1773772227
 GameObject:
   m_ObjectHideFlags: 0
