@@ -535,9 +535,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3251203292140869222, guid: 1dbf31155fc62894da0fbc561aef89bc, type: 3}
+      propertyPath: fuerzaDisparo
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3251203292140869222, guid: 1dbf31155fc62894da0fbc561aef89bc, type: 3}
+      propertyPath: "da\xF1oDelProyectil"
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5485804946274613149, guid: 1dbf31155fc62894da0fbc561aef89bc, type: 3}
       propertyPath: m_Name
       value: BOSS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084418724837317659, guid: 1dbf31155fc62894da0fbc561aef89bc, type: 3}
+      propertyPath: VidaMaxima
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

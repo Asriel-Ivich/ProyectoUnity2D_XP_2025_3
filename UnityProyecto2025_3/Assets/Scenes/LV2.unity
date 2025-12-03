@@ -2725,6 +2725,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemigoAZUL
       objectReference: {fileID: 0}
+    - target: {fileID: 7579077137508948911, guid: f5d87d5a4c3976342a30780bb410803c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
