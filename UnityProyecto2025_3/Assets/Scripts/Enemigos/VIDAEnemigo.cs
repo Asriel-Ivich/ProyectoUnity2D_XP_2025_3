@@ -41,7 +41,7 @@ public class VIDAEnemigo : MonoBehaviour
     {
         muerto = true;
 
-        // Opcional: apagar movimiento / disparo si los usas
+        
         var patrol = GetComponent<EnemyPatrolVertical>();
         if (patrol != null) patrol.enabled = false;
 

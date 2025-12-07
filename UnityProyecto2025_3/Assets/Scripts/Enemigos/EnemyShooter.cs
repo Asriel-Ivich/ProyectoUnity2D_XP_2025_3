@@ -27,7 +27,7 @@ public class EnemyShooter : MonoBehaviour
 
     private void Awake()
     {
-        // Busca un AudioSource en el mismo objeto si no se asigna desde el Inspector
+        
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
@@ -53,16 +53,16 @@ public class EnemyShooter : MonoBehaviour
             return;
         }
 
-        // Instancia del proyectil en el punto definido
+       
         var proyectil = Instantiate(proyectilPrefab, puntoDisparo.position, Quaternion.identity);
 
-        // Asigna velocidad hacia abajo 
+        // Asigna velocidad 
         if (proyectil.TryGetComponent<Rigidbody2D>(out var rb))
         {
             rb.linearVelocity = Vector2.down * fuerzaDisparo;
         }
 
-        // Asigna daño dinámicamente si el prefab tiene el componente DisparoEnemigo
+        // Asigna daño 
         if (proyectil.TryGetComponent<DisparoEnemigo>(out var script))
         {
             script.Daño = dañoDelProyectil;
@@ -74,7 +74,7 @@ public class EnemyShooter : MonoBehaviour
 
     private void ReproducirSonidoDisparo()
     {
-        // Verifica que existan referencias de audio
+        
         if (audioSource != null && sonidoDisparo != null)
         {
             // Reproduce el sonido del disparo

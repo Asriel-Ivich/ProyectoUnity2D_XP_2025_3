@@ -482,6 +482,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128
+  "tiempoDa\xF1o": 0.2
+  audioController: {fileID: 0}
 --- !u!212 &926837027
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -642,6 +644,7 @@ MonoBehaviour:
   balaPrefab: {fileID: 2253073871541207948, guid: 1c7daa965e022e94695bb388722ad804, type: 3}
   coldown: 0.5
   puntoRefer: {fileID: 751756942}
+  audioController: {fileID: 0}
 --- !u!1001 &1137267603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1214,6 +1217,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4201869850039450960, guid: 9526fb0ce78938b49b73bcfe6dc28445, type: 3}
+      propertyPath: Priority
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201869850039450960, guid: 9526fb0ce78938b49b73bcfe6dc28445, type: 3}
+      propertyPath: m_Volume
+      value: 0.636
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529354713597704064, guid: 9526fb0ce78938b49b73bcfe6dc28445, type: 3}
+      propertyPath: sonidoDisparo
+      value: 
+      objectReference: {fileID: 8300000, guid: 4defe1e0947dfbf4e81e9750ec90ada8, type: 3}
     - target: {fileID: 7687103550569622622, guid: 9526fb0ce78938b49b73bcfe6dc28445, type: 3}
       propertyPath: whatIsGround.m_Bits
       value: 320
@@ -1354,7 +1369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4433415018763454398, guid: 5c00a9d6b472e284896e8de89312cce5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4608258291725103257, guid: 5c00a9d6b472e284896e8de89312cce5, type: 3}
       propertyPath: m_LocalPosition.x
