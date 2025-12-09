@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(AudioSource))] // Añadimos el requerimiento de AudioSource
 public class MovimientoPerrito : MonoBehaviour
 {
     [Header("Movimiento")]
@@ -15,18 +16,21 @@ public class MovimientoPerrito : MonoBehaviour
     [Header("Sprite")]
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    // Componentes
+    [Header("Sonido")]
+    [SerializeField] private AudioClip sonidoRecoleccion; // Sonido cuando el jugador toca al perrito
+    [SerializeField] private float volumenSonido = 1f; // Volumen del sonido (0 a 1)
+    [SerializeField] private bool destruirDespuesDelSonido = true; // Si se debe esperar a que termine el sonido
+
     private Rigidbody2D rb;
     private PerritoSpawner spawner;
+    private AudioSource audioSource; // Referencia al AudioSource
 
-    // Control de movimiento
     private int direccion = 1;
     private float temporizadorVida;
     private bool activo = true;
     private Collider2D plataformaActual;
     private Vector2 limitesPlataforma;
 
-    // Prevención de bug
     private float tiempoUltimoCambio = 0f;
     private float tiempoMinimoEntreCambios = 0.5f;
     private int intentosFallidos = 0;
@@ -36,16 +40,21 @@ public class MovimientoPerrito : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
+        // Obtener o crear AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         if (spriteRenderer == null)
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         temporizadorVida = tiempoDeVida;
 
-        // Configurar rigidbody
         rb.gravityScale = 0f;
         rb.freezeRotation = true;
 
-        // Detectar plataforma inicial
         DetectarPlataformaActual();
     }
 
@@ -65,22 +74,18 @@ public class MovimientoPerrito : MonoBehaviour
     {
         if (!activo || plataformaActual == null) return;
 
-        // Actualizar límites de la plataforma
         ActualizarLimitesPlataforma();
 
-        // Verificar si necesita cambiar dirección
         if (Time.time - tiempoUltimoCambio >= tiempoMinimoEntreCambios)
         {
             VerificarBordePlataforma();
         }
 
-        // Mover al perro
         MoverPerro();
     }
 
     void DetectarPlataformaActual()
     {
-        // Usar un circle cast para detectar la plataforma debajo
         Vector2 origen = transform.position;
         float radio = 0.2f;
         float distancia = 0.5f;
@@ -95,7 +100,6 @@ public class MovimientoPerrito : MonoBehaviour
                 ActualizarLimitesPlataforma();
                 intentosFallidos = 0;
 
-                // Debug visual
                 Debug.DrawRay(hit.point, Vector2.up * 0.2f, Color.green, 1f);
                 break;
             }
@@ -119,7 +123,6 @@ public class MovimientoPerrito : MonoBehaviour
         Bounds bounds = plataformaActual.bounds;
         limitesPlataforma = new Vector2(bounds.min.x, bounds.max.x);
 
-        // Debug visual
         Debug.DrawLine(
             new Vector3(limitesPlataforma.x, transform.position.y - 0.1f, transform.position.z),
             new Vector3(limitesPlataforma.y, transform.position.y - 0.1f, transform.position.z),
@@ -135,22 +138,17 @@ public class MovimientoPerrito : MonoBehaviour
             return;
         }
 
-        // Calcular posición actual relativa a los límites
         float posX = transform.position.x;
 
-        // Si estamos muy cerca del borde izquierdo
         if (posX <= limitesPlataforma.x + distanciaMinimaBorde)
         {
-            // Si vamos hacia la izquierda, cambiar a derecha
             if (direccion == -1)
             {
                 CambiarDireccion();
             }
         }
-        // Si estamos muy cerca del borde derecho
         else if (posX >= limitesPlataforma.y - distanciaMinimaBorde)
         {
-            // Si vamos hacia la derecha, cambiar a izquierda
             if (direccion == 1)
             {
                 CambiarDireccion();
@@ -158,14 +156,12 @@ public class MovimientoPerrito : MonoBehaviour
         }
         else
         {
-            // Si estamos en el centro, asegurarnos de que estamos sobre la plataforma
             VerificarSiSigueEnPlataforma();
         }
     }
 
     void VerificarSiSigueEnPlataforma()
     {
-        // Verificar si todavía estamos sobre la plataforma
         Vector2 origen = transform.position;
         float distancia = 0.3f;
 
@@ -173,7 +169,6 @@ public class MovimientoPerrito : MonoBehaviour
 
         if (hit.collider == null || hit.collider != plataformaActual)
         {
-            // Buscar nueva plataforma
             DetectarPlataformaActual();
         }
     }
@@ -182,18 +177,13 @@ public class MovimientoPerrito : MonoBehaviour
     {
         if (plataformaActual == null) return;
 
-        // Calcular nueva posición
         float nuevaVelocidadX = direccion * velocidadMovimiento;
 
-        // Aplicar movimiento
         Vector2 velocidadActual = rb.linearVelocity;
         rb.linearVelocity = new Vector2(nuevaVelocidadX, velocidadActual.y);
 
-        // Sincronizar con plataforma móvil
         if (plataformaActual.TryGetComponent<PlataformaMOVIL>(out PlataformaMOVIL plataformaMovil))
         {
-            // El movimiento en Y ya lo maneja el parent, solo nos aseguramos de seguirla
-            // En plataformas móviles, ajustamos manualmente la posición
             Vector2 velocidadPlataforma = plataformaMovil.GetComponent<Rigidbody2D>()?.linearVelocity ?? Vector2.zero;
             rb.linearVelocity += new Vector2(0, velocidadPlataforma.y);
         }
@@ -204,7 +194,6 @@ public class MovimientoPerrito : MonoBehaviour
         tiempoUltimoCambio = Time.time;
         direccion *= -1;
 
-        // Voltear sprite
         if (spriteRenderer != null)
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
@@ -221,22 +210,9 @@ public class MovimientoPerrito : MonoBehaviour
             if (playerVida != null)
             {
                 playerVida.RecuperarVida(vidaParaRecuperar);
-                DestruirItem();
-            }
-        }
-    }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Si colisiona con algo que no es player, podría ser una pared
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Piso") ||
-            collision.gameObject.layer == LayerMask.NameToLayer("Plataforma"))
-        {
-            // Si hay colisión frontal, cambiar dirección
-            ContactPoint2D contacto = collision.GetContact(0);
-            if (Mathf.Abs(contacto.normal.x) > 0.5f)
-            {
-                CambiarDireccion();
+                // Reproducir sonido antes de destruir
+                ReproducirSonidoYDestruir();
             }
         }
     }
@@ -250,28 +226,94 @@ public class MovimientoPerrito : MonoBehaviour
     {
         if (!activo) return;
 
+        // Reproducir sonido antes de destruir (si hay sonido asignado)
+        if (sonidoRecoleccion != null)
+        {
+            ReproducirSonidoYDestruir();
+        }
+        else
+        {
+            DestruirInmediatamente();
+        }
+    }
+
+    // Método para reproducir sonido y luego destruir
+    void ReproducirSonidoYDestruir()
+    {
+        if (!activo) return;
+
         activo = false;
 
+        // Desactivar componentes visuales y físicos
+        if (spriteRenderer != null)
+            spriteRenderer.enabled = false;
+
+        Collider2D collider = GetComponent<Collider2D>();
+        if (collider != null)
+            collider.enabled = false;
+
+        rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
+
+        // Reproducir el sonido
+        if (sonidoRecoleccion != null && audioSource != null)
+        {
+            audioSource.clip = sonidoRecoleccion;
+            audioSource.volume = volumenSonido;
+            audioSource.Play();
+
+            if (destruirDespuesDelSonido)
+            {
+                // Esperar a que termine el sonido antes de destruir
+                Destroy(gameObject, sonidoRecoleccion.length);
+            }
+            else
+            {
+                // Destruir inmediatamente (el sonido seguirá reproduciéndose si es un OneShot)
+                DestruirInmediatamente();
+            }
+        }
+        else
+        {
+            // Si no hay sonido, destruir inmediatamente
+            DestruirInmediatamente();
+        }
+
+        // Notificar al spawner
         if (spawner != null)
         {
             spawner.PerroDestruido();
         }
+    }
 
+    // Método para destruir inmediatamente
+    void DestruirInmediatamente()
+    {
         Destroy(gameObject);
     }
 
-    // Debug visual
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Piso") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("Plataforma"))
+        {
+            ContactPoint2D contacto = collision.GetContact(0);
+            if (Mathf.Abs(contacto.normal.x) > 0.5f)
+            {
+                CambiarDireccion();
+            }
+        }
+    }
+
     void OnDrawGizmos()
     {
         if (!Application.isPlaying || !activo) return;
 
-        // Dibujar rayos de detección
         Gizmos.color = Color.green;
         Vector2 origen = transform.position;
         Gizmos.DrawWireSphere(origen, 0.2f);
         Gizmos.DrawLine(origen, origen + Vector2.down * 0.5f);
 
-        // Dibujar límites de plataforma
         if (plataformaActual != null)
         {
             Gizmos.color = Color.yellow;
