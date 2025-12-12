@@ -46,7 +46,7 @@ public class EnemyShooter : MonoBehaviour
 
     private void Disparar()
     {
-        // Verifica referencias necesarias para disparar
+        // Verifica referencias 
         if (proyectilPrefab == null || puntoDisparo == null)
         {
             Debug.LogWarning($"{name}: faltan referencias al prefab o punto de disparo.");
@@ -56,19 +56,19 @@ public class EnemyShooter : MonoBehaviour
        
         var proyectil = Instantiate(proyectilPrefab, puntoDisparo.position, Quaternion.identity);
 
-        // Asigna velocidad 
+        //  velocidad 
         if (proyectil.TryGetComponent<Rigidbody2D>(out var rb))
         {
             rb.linearVelocity = Vector2.down * fuerzaDisparo;
         }
 
-        // Asigna daño 
+        //  da;o 
         if (proyectil.TryGetComponent<DisparoEnemigo>(out var script))
         {
             script.Daño = dañoDelProyectil;
         }
 
-        // Llama al audio del disparo
+        // Llama audio del disparo
         ReproducirSonidoDisparo();
     }
 
@@ -77,7 +77,7 @@ public class EnemyShooter : MonoBehaviour
         
         if (audioSource != null && sonidoDisparo != null)
         {
-            // Reproduce el sonido del disparo
+            // Reproduce  sonido del disparo
             audioSource.PlayOneShot(sonidoDisparo);
         }
     }

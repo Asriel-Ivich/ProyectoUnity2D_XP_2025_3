@@ -14,7 +14,7 @@ public class EnemyPatrolVertical : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 puntoInicio;
-    private int direccion = 1; // 1 = derecha, -1 = izquierda
+    private int direccion = 1; 
     private bool bajando = false;
     private float temporizadorBajada;
     private float alturaInicial;
@@ -31,14 +31,14 @@ public class EnemyPatrolVertical : MonoBehaviour
     {
         if (bajando)
         {
-            // Movimiento vertical hacia abajo
+            // movimiento  hacia abajo
             rb.linearVelocity = new Vector2(0, -velocidadBajada);
 
             // Detener bajada al alcanzar la distancia configurada
             if (alturaInicial - rb.position.y >= distanciaBajada)
             {
                 bajando = false;
-                alturaInicial = rb.position.y; // Actualiza nueva altura base
+                alturaInicial = rb.position.y; // actualiza
                 temporizadorBajada = tiempoAntesDeBajar; // Reinicia contador
             }
         }

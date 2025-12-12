@@ -11,8 +11,9 @@ public class ZonaDerrota : MonoBehaviour
 
     private void Awake()
     {
-        // Busca el script Pausa en la escena
-        pauseManager = FindObjectOfType<Pausa>();
+        /* Busca el script Pausa en la escena
+        pauseManager = FindObjectOfType<Pausa>();*/
+        pauseManager = Object.FindFirstObjectByType<Pausa>();
 
         if (pauseManager == null)
         {
