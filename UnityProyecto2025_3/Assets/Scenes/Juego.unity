@@ -5696,7 +5696,7 @@ PrefabInstance:
     - target: {fileID: 5009210893673930031, guid: 9526fb0ce78938b49b73bcfe6dc28445, type: 3}
       propertyPath: particulaVida
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3452794252939480872}
     - target: {fileID: 7529354713597704064, guid: 9526fb0ce78938b49b73bcfe6dc28445, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -5721,6 +5721,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3da0abd581de76c4f8bc9f637ed02547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &3452794252939480872 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2435865591661918943, guid: 9526fb0ce78938b49b73bcfe6dc28445, type: 3}
+  m_PrefabInstance: {fileID: 3452794252939480870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
