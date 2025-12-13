@@ -93,6 +93,11 @@ public class Pausa : MonoBehaviour
         Time.timeScale = 0f;
         juegoPausado = true;
 
+        if (MusicaFondoController.Instance != null)
+        {
+            MusicaFondoController.Instance.DetenerMusica();
+        }
+
         if (panelGameOver != null)
         {
             panelGameOver.SetActive(true);
@@ -104,6 +109,11 @@ public class Pausa : MonoBehaviour
     {
         Time.timeScale = 0f; 
         juegoPausado = true;
+
+        if (MusicaFondoController.Instance != null)
+        {
+            MusicaFondoController.Instance.DetenerMusica();
+        }
 
         if (panelVictoria != null)
         {
