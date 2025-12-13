@@ -5,6 +5,8 @@ public class PlayerVida : MonoBehaviour
     public int vidaMaxima = 20;
     public int vidaActual;
 
+    public ParticleSystem particulaVida;
+
     private CharacterControler characterControler;//Animacion
     public PlayerAudioController audioController;// audio
 
@@ -66,6 +68,11 @@ public class PlayerVida : MonoBehaviour
         int vidaRealRecuperada = vidaActual - vidaAnterior;
 
         Debug.Log($"Player recuperó {vidaRealRecuperada} de vida. Vida actual: {vidaActual}/{vidaMaxima}");
+
+        if (vidaRealRecuperada > 0 && particulaVida != null)
+        {
+            particulaVida.Play();
+        }
     }
 
     private void Morir()
